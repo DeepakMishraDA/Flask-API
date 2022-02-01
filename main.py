@@ -4,11 +4,16 @@ from flask_restful import Api, Resource
 app = Flask(__name__)
 api = Api(app)
 
-class Hello(Resource):
-	def get(self):
-		return {"Mine":"Shreya"}
+#name = {"name": "Deepak", "age":"age"}
 
-api.add_resource(Hello, "/helo")
+class Hello(Resource):
+	def get(self, name, id):
+		return {"Hello":name, "your age": id}
+
+
+api.add_resource(Hello, "/helo/<string:name>/<int:id>")
+
+
 
 if __name__ == "__main__":
 	app.run(debug=True)
