@@ -4,14 +4,15 @@ from flask_restful import Api, Resource
 app = Flask(__name__)
 api = Api(app)
 
-#name = {"name": "Deepak", "age":"age"}
+names = {"this":{ "who":"Deepak", "age":18},
+"that": {"who": "Shreya","age": 16}}
 
 class Hello(Resource):
-	def get(self, name, id):
-		return {"Hello":name, "your age": id}
+	def get(self, name):
+		return names[name]
 
 
-api.add_resource(Hello, "/helo/<string:name>/<int:id>")
+api.add_resource(Hello, "/helo/<string:name>")
 
 
 
